@@ -11,7 +11,7 @@ from fb import RECENT_BEST_MODEL_FILE
 TRAIN_EPOCHS = 300
 TEST_ACC_REQUIREMENT = 0.71
 VALIDATION_ACC_REQUIREMENT = 0.68
-BATCH_SIZE = 32
+BATCH_SIZE = 44
 
 
 '''
@@ -46,6 +46,8 @@ while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
 
     # Turn data frames into datasets.
     train_ds = df_to_ds(train_frame, batch_size=BATCH_SIZE)
+    # Try to avoid fitting warnings.
+    train_ds = train_ds.repeat()
     val_ds = df_to_ds(val_frame, shuffle=False, batch_size=BATCH_SIZE)
     test_ds = df_to_ds(test_frame, shuffle=False, batch_size=BATCH_SIZE)
 
@@ -72,7 +74,12 @@ while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
     )
 
     # Train.
-    fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS, verbose=0)
+    # Try to avoid warnings with: https://github.com/tensorflow/tensorflow/issues/32817
+    features = train_frame.copy()
+    features.pop('result')
+    print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
+    fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS,
+                                steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=0)
 
     # Evaluate the accuracy on the test dataset.
     test_loss, test_acc = model.evaluate(packed_test_ds)
