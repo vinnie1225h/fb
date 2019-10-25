@@ -1,13 +1,12 @@
 round,home,away,advantage0,score0,advantage1,score1,advantage2,score2,advantage3,score3,advantage4,score4,defense_home,defense_away,cheat,goals,players,result,score_final,link,comment
-9,EIB,BAR,0.1,0:0,-0.1,0:1,-0.1,0:1,-0.3,0:1,-0.1,0:1,0,0,no,-1,0,0,1:2,https://www.iqiyi.com/v_19rtcyodz8.html,no comment
-2,BAR,BET,0.2,0:0,-0.1,0:1,0,0:1,0.3,0:1,0.4,1:1,0,1,no,0,0,2,5:2,https://www.iqiyi.com/v_19rt4tqyfk.html,no comment
-2,LEV,VIL,-0.4,0:1,-0.7,0:1,-1,0:1,-0.3,0:1,0,0:1,-1,0,both,-1,0,2,2:1,https://www,no comment
-3,GET,ALA,0.1,0:0,0,0:0,0.4,1:0,-0.2,1:1,0,1:1,0,0,no,0,0,1,1:1,https://www.iqiyi.com/v_19rsptu8ks.html,no comment
-3,ESP,GRA,0.1,0:0,-0.4,0:1,0.1,0:1,-0.1,0:1,0,0:1,0,1,no,-1,0,0,0:3,https://www.iqiyi.com/v_19rsuxvrc8.html,no comment
-3,VIL,RMA,0,0:0,0.4,1:0,-0.2,1:0,-0.6,1:0,-0.5,1:1,0,0,away,0,0,1,2:2,https://www,no comment
-3,ATM,EIB,-0.4,0:1,-0.2,0:2,0.3,1:2,0,1:2,0,1:2,0,0,no,-1,0,2,3:2,https://www.iqiyi.com/v_19rsuxx6zc.html,no comment
-3,OSA,BAR,0.3,1:0,0,1:0,0,1:0,0,1:0,0,1:0,1,0,no,1,0,1,2:2,https://www.iqiyi.com/v_19rspmo6qw.html,no comment
-3,LEV,VLL,-0.1,0:0,0.1,0:0,-0.3,0:0,-0.3,0:0,0.3,0:0,0,0,no,0,0,2,2:0,https://www,no comment
-3,ATH,RSO,0,0:0,0.3,1:0,0.1,2:0,0,2:0,0.2,2:0,1,0,no,2,0,2,2:0,https://www.iqiyi.com/v_19rsokz6vw.html,no comment
-3,BET,LEG,0,0:0,0,0:0,0.1,0:0,0,0:0,0.1,0:0,0,0,no,0,0,2,2:1,https://www,no comment
-3,VAL,MLL,-0.4,0:0,0.3,0:0,0,0:0,-0.1,0:0,0,1:0,0,0,no,1,0,2,2:0,https://www,no comment
+5,OSA,BET,0,0:0,0.35,0:0,0,0:0,0.25,0:0,0.25,0:0,0,0,no,0,0,1,0:0,https://www,no comment
+5,GET,MLL,0,1:0,0.25,1:0,0.15,1:0,0.25,2:0,0,2:0,1,-1,no,2,0,2,4:2,https://www,no comment
+5,LEV,EIB,0,0:0,0,0:0,0,0:0,0.25,0:0,0.45,0:0,0,0,no,0,0,1,0:0,https://www,no comment
+5,SEV,RMA,0,0:0,0,0:0,0,0:0,0.5,0:0,0,0:0,1,0,no,0,0,0,0:1,https://www,no comment
+6,VLL,GLA,0,0:0,0.4,1:0,0,1:0,0,1:0,-0.3,1:1,0,-1,away,0,0,1,1:1,https://www,no comment
+6,RMA,OSA,0,0:0,0.25,0:0,0.25,0:0,0.25,1:0,0.5,1:0,1,0,no,1,0,2,2:0,https://www,no comment
+6,CEL,ESP,0,0:0,0.1,0:0,0.1,0:0,0.1,0:0,0.1,0:0,0,0,no,0,0,1,1:1,https://www,no comment
+7,VIL,BET,0,0:0,0.3,0:0,-0.1,0:0,0,1:0,0,1:0,0,0,no,1,0,2,5:1,https://www,no comment
+7,GRA,LEG,0,0:0,0.1,0:0,-0.3,1:0,0,1:0,0.1,1:0,0,0,home,1,0,2,1:0,https://www.iqiyi.com/v_19ru22hyo8.html,GRA cheat
+7,EIB,CEL,0,0:0,0.1,0:0,0,0:0,-0.3,0:0,0,0:0,1,1,no,0,0,2,2:0,https://www.iqiyi.com/v_19ru28qj3s.html,no comment
+1,ATH,BAR,0.1,0:0,0.1,0:0,0,0:0,0,0:0,0,0:0,1,0,no,0,0,2,1:0,https://www.iqiyi.com/v_19rt7g2ezw.html,no comment

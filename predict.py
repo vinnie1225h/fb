@@ -33,7 +33,7 @@ for feature_batch_dict, label_array in fresh_ds:
     # for each example in batch.
     for example_index in range(PREDICT_BATCH_SIZE):
         print("\n------- Prediction {} -------".format(example_count + 1))
-        print("{}({:2.2f})".format(
+        print("{}({:2.2f})\n".format(
             np.argmax(predictions[example_count]),
             predictions[example_count][np.argmax(predictions[example_count])]))
 
