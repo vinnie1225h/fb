@@ -8,10 +8,11 @@ from fb import plot_fitting_history
 from fb import RECENT_BEST_MODEL_FILE
 
 
-TRAIN_EPOCHS = 300
-TEST_ACC_REQUIREMENT = 0.73
-VALIDATION_ACC_REQUIREMENT = 0.73
+TRAIN_EPOCHS = 500
+TEST_ACC_REQUIREMENT = 0.74
+VALIDATION_ACC_REQUIREMENT = 0.74
 BATCH_SIZE = 48
+FITTING_VERBOSE = 0
 
 
 '''
@@ -79,7 +80,7 @@ while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
     features.pop('result')
     print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
     fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS,
-                                steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=0)
+                                steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=FITTING_VERBOSE)
 
     # Evaluate the accuracy on the test dataset.
     test_loss, test_acc = model.evaluate(packed_test_ds)
