@@ -61,7 +61,7 @@ def define_model():
     model = keras.Sequential([
         preprocessing_layer,
         keras.layers.Dense(7, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu', input_shape=(7,)),
-        keras.layers.Dense(5, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'),
+        keras.layers.Dense(7, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'),
         keras.layers.Dense(3, activation='softmax')
     ])
     return model
