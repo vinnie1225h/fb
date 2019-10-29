@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import numpy as np
+import fb
 from fb import df_to_ds
 from fb import pack_dataset
 from fb import define_model
@@ -8,7 +9,7 @@ from fb import plot_fitting_history
 from fb import RECENT_BEST_MODEL_FILE
 
 
-TRAIN_EPOCHS = 500
+TRAIN_EPOCHS = 200
 TEST_ACC_REQUIREMENT = 0.7
 VALIDATION_ACC_REQUIREMENT = 0.7
 BATCH_SIZE = 51
@@ -31,6 +32,7 @@ val_acc = 0
 split_info_showed = False
 attempts = 0
 while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
+    '''
     # Split the dataframe into train, validation and test.
     train_frame, test_frame = train_test_split(data_frame, test_size=0.2)
     train_frame, val_frame = train_test_split(train_frame, test_size=0.2)
@@ -81,14 +83,20 @@ while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
     print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
     fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS,
                                 steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=FITTING_VERBOSE)
+    '''
 
+
+    model = define_model()
+    fb.train_step(model, 200, 20, BATCH_SIZE)
+
+    '''    
     # Evaluate the accuracy on the test dataset.
     test_loss, test_acc = model.evaluate(packed_test_ds)
     val_acc = fitting_history.history['val_accuracy'][-1]
     print('\nTest Accuracy: {:.2f}'.format(test_acc))
     print('Validation Accuracy: {:.2f}'.format(val_acc))
     print('-------------------------------------------------\n')
-
+    '''
 # End of while loop.
 
 model.summary()
