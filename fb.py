@@ -85,8 +85,8 @@ def define_model():
 
     model = keras.Sequential()
     model.add(preprocessing_layer)
-    model.add(keras.layers.Dense(7, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'))
-    model.add(keras.layers.Dense(5, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'))
+    model.add(keras.layers.Dense(8, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'))
+    model.add(keras.layers.Dense(8, kernel_regularizer=keras.regularizers.l2(0.001), activation='relu'))
     model.add(keras.layers.Dense(3, activation='softmax'))
 
     '''
@@ -103,7 +103,7 @@ def define_model():
     return model
 
 
-def train_step(model, step_epochs, total_attempts, batch_size):
+def compare_trainning_step(layer_desc, step_epochs, total_attempts, batch_size):
     print('---------------------------------------------------------------------------------')
 
     # Read the training data.
@@ -111,14 +111,17 @@ def train_step(model, step_epochs, total_attempts, batch_size):
 
     attempts = 0
     accuracy_count = 0
+    split_info_showed = False
     while attempts < total_attempts:
         # Split the dataframe into train, validation and test.
         train_frame, test_frame = train_test_split(data_frame, test_size=0.2)
         train_frame, val_frame = train_test_split(train_frame, test_size=0.2)
 
-        print(len(train_frame), 'train examples')
-        print(len(val_frame), 'validation examples')
-        print(len(test_frame), 'test examples')
+        if not split_info_showed:
+            print(len(train_frame), 'train examples')
+            print(len(val_frame), 'validation examples')
+            print(len(test_frame), 'test examples')
+            split_info_showed = True;
 
         # Turn data frames into datasets.
         train_ds = df_to_ds(train_frame, batch_size=batch_size)
@@ -131,6 +134,8 @@ def train_step(model, step_epochs, total_attempts, batch_size):
         packed_train_ds = pack_dataset(train_ds)
         packed_val_ds = pack_dataset(val_ds)
         packed_test_ds = pack_dataset(test_ds)
+
+        model = define_model_ex(layer_desc)
 
         # Define the optimizer, loss/error function and how we measure the performance.
         model.compile(
