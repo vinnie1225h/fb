@@ -104,7 +104,9 @@ def define_model():
 
 
 def compare_trainning_step(layer_desc, step_epochs, total_attempts, batch_size):
-    print('---------------------------------------------------------------------------------')
+    print("-------------------------------- Training Step: Layers = {}; Epochs = {}; Total Attempts = {}; Batch Size = {} -------------------------------------------------".format(
+        layer_desc, step_epochs, total_attempts, batch_size
+    ))
 
     # Read the training data.
     data_frame = pd.read_csv('train.csv')
