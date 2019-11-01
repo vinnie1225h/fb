@@ -113,6 +113,7 @@ def compare_trainning_step(layer_desc, step_epochs, total_attempts, batch_size):
 
     attempts = 0
     accuracy_count = 0
+    max_accuracy = 0
     split_info_showed = False
     while attempts < total_attempts:
         # Split the dataframe into train, validation and test.
@@ -160,11 +161,12 @@ def compare_trainning_step(layer_desc, step_epochs, total_attempts, batch_size):
         # Evaluate the accuracy on the test dataset.
         test_loss, test_acc = model.evaluate(packed_test_ds)
         accuracy_count = accuracy_count + test_acc
+        max_accuracy = max(max_accuracy, test_acc)
 
         #fb.plot_fitting_history(fitting_history)
 
         attempts = attempts + 1
-    return accuracy_count / total_attempts
+    return accuracy_count / total_attempts, max_accuracy
 
 
 # Define a utility funciton create a tf dataset from a pandas Dataframe.

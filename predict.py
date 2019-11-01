@@ -28,19 +28,34 @@ predictions = loaded_model.predict(packed_fresh_ds)
 
 # Show the prediction.
 example_count = 0
+correct_count = 0
 # for each ds batch which is a dictionary mapping each feature batch to its corresponding label array.
 for feature_batch_dict, label_array in fresh_ds:
     # for each example in batch.
     for example_index in range(PREDICT_BATCH_SIZE):
-        print("\n------- Prediction {} -------".format(example_count + 1))
-        print("{}({:2.2f})\n".format(
-            np.argmax(predictions[example_count]),
-            predictions[example_count][np.argmax(predictions[example_count])]))
+        print("\n\n- Prediction {}: ".format(example_count + 1), end='       ')
+        real_result = label_array[example_index]
+        predicted_result = np.argmax(predictions[example_count])
+        if (real_result == predicted_result):
+            correct_count = correct_count + 1
+
+            print("{}({:2.2f})              ".format(
+                predicted_result,
+                predictions[example_count][predicted_result]),
+                end='              ')
+        else:
+            print("{}({:2.2f}) -> {} Wrong!!!".format(
+                predicted_result,
+                predictions[example_count][predicted_result],
+                real_result),
+                end='              ')
 
         for feature in FEATURES_IN_PREDICTION:
-            print(feature, feature_batch_dict[feature][example_index].numpy())
+            print(feature, '=', feature_batch_dict[feature][example_index].numpy(), end=' | ')
         example_count = example_count + 1
         if example_count >= len(predictions):
             break
     if example_count >= len(predictions):
         break
+
+print("\n\n-------------- Prediction Accuracy: {:2.2f} --------------".format(correct_count / example_count))
