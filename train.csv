@@ -8,7 +8,7 @@ round,home,away,advantage0,score0,advantage1,score1,advantage2,score2,advantage3
 1,ESP,SEV,-0.1,0:0,0,0:0,0,0:0,0.1,0:0,-0.3,0:1,0,1,no,-1,0,0,0:2,https://www.iqiyi.com/v_19rtdcpnyc.html,no comment
 1,CEL,RMA,0,0:0,-0.4,0:1,0,0:1,0.1,0:1,-0.1,0:1,0,1,no,-1,0,0,1:3,https://www.iqiyi.com/v_19rt7sv048.html,no comment
 1,ATM,GET,0,0:0,0.3,0:0,0.6,1:0,0,1:0,0,1:0,1,0,no,1,0,2,1:0,https://www.iqiyi.com/v_19rte3p7yc.html,no comment
-1,ATH,BAR,0.1,0:0,0.1,0:0,0,0:0,0,0:0,0,0:0,1,0,no,0,0,2,1:0,https://www.iqiyi.com/v_19rt7g2ezw.html,no comment
+1,ATH,BAR,0.1,0:0,0.1,0:0,0,0:0,0,0:0,0,0:0,1,0,away,0,0,2,1:0,https://www.iqiyi.com/v_19rt7g2ezw.html,no comment
 2,OSA,EIB,0,0:0,0,0:0,0,0:0,0.1,0:0,0.4,0:0,0,0,no,0,0,1,0:0,https://www.iqiyi.com/v_19rsz44bms.html,no comment
 2,ALA,ESP,0,0:0,0.1,0:0,0.3,0:0,0,0:0,0,0:0,0,-1,away,0,0,1,0:0,https://www.iqiyi.com/v_19rt4pmxjs.html,no comment
 2,CEL,VAL,0,0:0,0.3,1:0,-0.3,1:0,0,1:0,-0.3,1:0,0,0,away,1,0,2,1:0,https://www,no comment
@@ -24,7 +24,7 @@ round,home,away,advantage0,score0,advantage1,score1,advantage2,score2,advantage3
 3,VIL,RMA,0,0:0,0.4,1:0,-0.2,1:0,-0.6,1:0,-0.5,1:1,0,0,away,0,0,1,2:2,https://www,no comment
 3,ATM,EIB,-0.4,0:1,-0.2,0:2,0.3,1:2,0,1:2,0,1:2,0,0,no,-1,0,2,3:2,https://www.iqiyi.com/v_19rsuxx6zc.html,no comment
 3,OSA,BAR,0.3,1:0,0,1:0,0,1:0,0,1:0,0,1:0,1,0,no,1,0,1,2:2,https://www.iqiyi.com/v_19rspmo6qw.html,no comment
-3,LEV,VLL,-0.1,0:0,0.1,0:0,-0.3,0:0,-0.3,0:0,0.3,0:0,0,0,no,0,0,2,2:0,https://www,no comment
+3,LEV,VLL,-0.1,0:0,0.1,0:0,-0.3,0:0,-0.3,0:0,0.3,0:0,0,0,home,0,0,2,2:0,https://www.iqiyi.com/v_19rsps9lgo.html,no comment
 3,ATH,RSO,0,0:0,0.3,1:0,0.1,2:0,0,2:0,0.2,2:0,1,0,no,2,0,2,2:0,https://www.iqiyi.com/v_19rsokz6vw.html,no comment
 3,BET,LEG,0,0:0,0,0:0,0.1,0:0,0,0:0,0.1,0:0,0,0,no,0,0,2,2:1,https://www,no comment
 3,VAL,MLL,-0.4,0:0,0.3,0:0,0,0:0,-0.1,0:0,0,1:0,0,0,no,1,0,2,2:0,https://www,no comment
@@ -79,10 +79,10 @@ round,home,away,advantage0,score0,advantage1,score1,advantage2,score2,advantage3
 8,RMA,GRA,0.3,1:0,0.3,1:0,0.3,1:0,0,1:0,0.4,2:0,1,0,no,2,0,2,4:2,https://www.iqiyi.com/v_19rtnyemyo.html,no comment
 8,LEG,LEV,0,0:0,0.1,0:0,0.1,0:0,0.3,0:0,0.3,0:1,1,0,no,-1,0,0,1:2,https://www.iqiyi.com/v_19rtnpz1mk.html,no comment
 8,BET,EIB,0.1,0:0,0,0:0,0.6,0:0,0,0:1,0.3,0:1,1,0,no,-1,0,1,1:1,https://www.iqiyi.com/v_19rtrsxsfw.html,no comment
-9,ATH,VLL,0.3,0:0,0,0:0,0.3,0:0,0.3,1:0,0,1:0,1,0,no,1,0,1,1:1,https://www.iqiyi.com/v_19rvi2swf8.html,no comment
+9,ATH,VLL,0.3,0:0,0,0:0,0.3,0:0,0.3,1:0,0,1:0,1,0,away,1,0,1,1:1,https://www.iqiyi.com/v_19rvi2swf8.html,no comment
 9,ESP,VIL,0.1,0:0,-0.2,0:1,0.1,0:1,0.3,0:1,0,0:1,0,0,no,-1,0,0,0:1,https://www.iqiyi.com/v_19rvi37ulw.html,no comment
 9,RSO,BET,0.1,0:0,-0.2,0:1,0,1:1,0.5,2:1,0.4,2:1,0,-1,no,1,0,2,3:1,https://www.iqiyi.com/v_19rvi3930c.html,no comment
-9,ALA,CEL,0,0:0,-0.1,0:0,-0.3,0:0,0.3,0:0,-0.1,0:0,0,0,no,0,0,2,2:0,https://www.iqiyi.com/v_19rvi4ir3c.html,no comment
+9,ALA,CEL,0,0:0,-0.1,0:0,-0.3,0:0,0.3,0:0,-0.1,0:0,0,0,away,0,0,2,2:0,https://www.iqiyi.com/v_19rvi4ir3c.html,no comment
 9,MLL,RMA,0.2,1:0,0,1:0,-0.4,1:0,-0.1,1:0,0,1:0,0,0,away,1,0,2,1:0,https://www.iqiyi.com/v_19rvh9nh2g.html,no comment
 9,GET,LEG,0,0:0,0,0:0,0.2,0:0,-0.1,0:0,0,0:0,0,0,no,0,0,2,2:0,https://www.iqiyi.com/v_19rvh9gkic.html,no comment
 9,ATM,VAL,0,0:0,0.2,0:0,0.4,0:0,0.1,1:0,0,1:0,0,0,no,1,0,1,1:1,https://www.iqiyi.com/v_19rvh9vm5c.html,no comment
