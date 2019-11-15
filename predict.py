@@ -4,14 +4,12 @@ from fb import df_to_ds
 from fb import pack_dataset
 from fb import define_model
 
-
-PREDICTING_MODEL_FILE = 'predicting_model.h5'
+PREDICTING_MODEL_FNAME = 'recent_best_weights_64_81_4.h5'
 FRESH_DATA_FILE = 'fresh_data.csv'
 FEATURES_IN_PREDICTION = ['round', 'home', 'away', 'cheat',
                           'advantage0', 'advantage1', 'advantage2', 'advantage3', 'advantage4',
                           'defense_home', 'defense_away', 'goals']
 PREDICT_BATCH_SIZE = 32
-
 
 # Load the fresh data for predicting.
 fresh_data_frame = pd.read_csv(FRESH_DATA_FILE)
@@ -21,7 +19,7 @@ packed_fresh_ds = pack_dataset(fresh_ds)
 # Prepare the model.
 loaded_model = define_model()
 loaded_model.predict(packed_fresh_ds)  # Avoid error.
-loaded_model.load_weights(PREDICTING_MODEL_FILE)
+loaded_model.load_weights(PREDICTING_MODEL_FNAME)
 
 # Do the predicting.
 predictions = loaded_model.predict(packed_fresh_ds)
@@ -58,4 +56,4 @@ for feature_batch_dict, label_array in fresh_ds:
     if example_count >= len(predictions):
         break
 
-print("\n\n-------------- Prediction Accuracy: {:2.2f} --------------".format(correct_count / example_count))
+print("\n\n-------------- Prediction Accuracy: {:2.2f}   with: {}--------------".format(correct_count / example_count, PREDICTING_MODEL_FNAME))

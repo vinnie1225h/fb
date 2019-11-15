@@ -209,7 +209,7 @@ def pack_dataset(dataset):
 
 
 # Show the fitting history.
-def plot_fitting_history(history, key='loss'):
+def plot_fitting_history(history, key='loss', block=True):
     plt.figure(figsize=(8, 5))
     val = plt.plot(history.epoch, history.history['val_' + key], '--', label='FB' + ' Val')
     plt.plot(history.epoch, history.history[key], color=val[0].get_color(), label='FB' + ' Train')
@@ -218,8 +218,8 @@ def plot_fitting_history(history, key='loss'):
     plt.legend()
     plt.xlim([0, max(history.epoch)])
 
-    plt.show(block=True)  # In PyCharm we need this to draw the figure.
+    plt.show(block=block)  # In PyCharm we need this to draw the figure.
 
 
-RECENT_BEST_MODEL_FILE = 'recent_best_weights.h5'
+RECENT_BEST_MODEL_FILE_PREFIX = 'recent_best_weights'
 
