@@ -4,7 +4,7 @@ from fb import df_to_ds
 from fb import pack_dataset
 from fb import define_model
 
-PREDICTING_MODEL_FNAME = 'recent_best_weights_80_81_7.h5'
+PREDICTING_MODEL_FNAME = 'recent_best_weights_80_81_8.h5'
 FRESH_DATA_FILE = 'fresh_data.csv'
 FEATURES_IN_PREDICTION = ['round', 'home', 'away', 'cheat',
                           'advantage0', 'advantage1', 'advantage2', 'advantage3', 'advantage4',

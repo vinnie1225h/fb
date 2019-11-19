@@ -44,10 +44,7 @@ def train_by_req():
             print(len(val_frame), 'validation examples')
             print(len(test_frame), 'test examples')
             print('\n\n')
-            split_info_showed = True
-
-        print('Attempt: ', attempts)
-        attempts = attempts + 1
+            # split_info_showed = True
 
         # Turn data frames into datasets.
         train_ds = df_to_ds(train_frame, batch_size=BATCH_SIZE)
@@ -82,16 +79,21 @@ def train_by_req():
         # Try to avoid warnings with: https://github.com/tensorflow/tensorflow/issues/32817
         features = train_frame.copy()
         features.pop('result')
-        print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
+
+        if not split_info_showed:
+            print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
+            split_info_showed = True
+
         fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS,
                                     steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=FITTING_VERBOSE)
 
         # Evaluate the accuracy on the test dataset.
-        test_loss, test_acc = model.evaluate(packed_test_ds)
+        test_loss, test_acc = model.evaluate(packed_test_ds, verbose=0)
         val_acc = fitting_history.history['val_accuracy'][-1]
-        print('\nTest Accuracy: {:.2f}'.format(test_acc))
-        print('Validation Accuracy: {:.2f}'.format(val_acc))
-        print('-------------------------------------------------\n')
+
+        print('Attempt: {:8}   Validation Accuracy: {:.2f}   Test Accuracy: {:.2f}'.format(attempts, val_acc, test_acc))
+        #print('-------------------------------------------------')
+        attempts = attempts + 1
     # End of while loop.
 
     model.summary()
