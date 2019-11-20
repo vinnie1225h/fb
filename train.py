@@ -7,6 +7,7 @@ from fb import pack_dataset
 from fb import define_model
 from fb import plot_fitting_history
 from fb import RECENT_BEST_MODEL_FILE_PREFIX
+import gc
 
 
 TRAIN_EPOCHS = 200
@@ -26,45 +27,53 @@ data_frame.dtypes
 # Read the training data.
 data_frame = pd.read_csv('train.csv')
 
+def split_data(show_info=False):
+    # Split the dataframe into train, validation and test.
+    train_frame, test_frame = train_test_split(data_frame, test_size=0.2)
+    train_frame, val_frame = train_test_split(train_frame, test_size=0.2)
+
+    if show_info:
+        print(len(train_frame), 'train examples')
+        print(len(val_frame), 'validation examples')
+        print(len(test_frame), 'test examples')
+        print('\n\n')
+
+    # Turn data frames into datasets.
+    train_ds = df_to_ds(train_frame, batch_size=BATCH_SIZE)
+    # Try to avoid fitting warnings.
+    train_ds = train_ds.repeat()
+    val_ds = df_to_ds(val_frame, shuffle=False, batch_size=BATCH_SIZE)
+    test_ds = df_to_ds(test_frame, shuffle=False, batch_size=BATCH_SIZE)
+
+    # for feature_batch, label_batch in train_ds.take(1):
+    # print('Every feature:', list(feature_batch.keys()))
+    # print('A batch of goal_difference1:', feature_batch['goals'])
+    # print('A batch of result:', label_batch)
+
+    # show_batch(train_ds)
+
+    # Pack numeric features.
+    packed_train_ds = pack_dataset(train_ds)
+    packed_val_ds = pack_dataset(val_ds)
+    packed_test_ds = pack_dataset(test_ds)
+    # show_batch(packed_train_ds)
+
+    return train_frame, test_frame, val_frame, train_ds, val_ds, test_ds, packed_train_ds, packed_val_ds, packed_test_ds
+
+
 def train_by_req():
     print("\n============================== Train Loop Starts ==============================")
 
     # Keep training models until one of them meet the acc requirements.
     test_acc = 0
     val_acc = 0
-    split_info_showed = False
+    show_split_info = True
     attempts = 0
+
     while test_acc < TEST_ACC_REQUIREMENT or val_acc < VALIDATION_ACC_REQUIREMENT:
-        # Split the dataframe into train, validation and test.
-        train_frame, test_frame = train_test_split(data_frame, test_size=0.2)
-        train_frame, val_frame = train_test_split(train_frame, test_size=0.2)
-
-        if not split_info_showed:
-            print(len(train_frame), 'train examples')
-            print(len(val_frame), 'validation examples')
-            print(len(test_frame), 'test examples')
-            print('\n\n')
-            # split_info_showed = True
-
-        # Turn data frames into datasets.
-        train_ds = df_to_ds(train_frame, batch_size=BATCH_SIZE)
-        # Try to avoid fitting warnings.
-        train_ds = train_ds.repeat()
-        val_ds = df_to_ds(val_frame, shuffle=False, batch_size=BATCH_SIZE)
-        test_ds = df_to_ds(test_frame, shuffle=False, batch_size=BATCH_SIZE)
-
-        # for feature_batch, label_batch in train_ds.take(1):
-        # print('Every feature:', list(feature_batch.keys()))
-        # print('A batch of goal_difference1:', feature_batch['goals'])
-        # print('A batch of result:', label_batch)
-
-        # show_batch(train_ds)
-
-        # Pack numeric features.
-        packed_train_ds = pack_dataset(train_ds)
-        packed_val_ds = pack_dataset(val_ds)
-        packed_test_ds = pack_dataset(test_ds)
-        # show_batch(packed_train_ds)
+        train_frame, test_frame, val_frame, train_ds, val_ds, test_ds, packed_train_ds, packed_val_ds, packed_test_ds =\
+            split_data(show_split_info)
+        show_split_info = False
 
         model = define_model()
 
@@ -80,12 +89,9 @@ def train_by_req():
         features = train_frame.copy()
         features.pop('result')
 
-        if not split_info_showed:
-            print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
-            split_info_showed = True
+        #print('steps_per_epoch: ', features.shape[0] // BATCH_SIZE)
 
-        fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS,
-                                    steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=FITTING_VERBOSE)
+        fitting_history = model.fit(packed_train_ds, validation_data=packed_val_ds, epochs=TRAIN_EPOCHS, steps_per_epoch=features.shape[0] // BATCH_SIZE, verbose=FITTING_VERBOSE)
 
         # Evaluate the accuracy on the test dataset.
         test_loss, test_acc = model.evaluate(packed_test_ds, verbose=0)
@@ -153,7 +159,6 @@ def train_by_req():
 
     model.save_weights(model_fname)
     del model
-
 
 # The train main loop.
 while True:
